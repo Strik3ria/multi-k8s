@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t strik3ria/react-test -f ./client/Dockerfile.dev ./client
+
+language: generic
+
+script:
+  - docker run -e CI=true strik3ria/react-test npm test
+  - docker run -e CI=true strik3ria/react-test npm test
+
+after_success:
+  - docker build -t strik3ria/multi-client ./client
+  - docker build -t strik3ria/multi-nginx ./nginx
+  - docker build -t strik3ria/multi-server ./server
+  - docker build -t strik3ria/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push strik3ria/multi-client
+  - docker push strik3ria/multi-nginx
+  - docker push strik3ria/multi-server
+  - docker push strik3ria/multi-worker
