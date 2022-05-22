@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import OtherPage from "./OtherPage";
 import Fib from "./Fib";
-import logo from "./logo.svg";
 
 class App extends Component {
   render() {
@@ -11,7 +10,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <Link to="/">Home</Link>
             <Link to="/otherpage">Other Page</Link>
           </header>
