@@ -18,7 +18,7 @@ before_install:
   - docker build -t strik3ria/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true strik3ria/reacte-test npm test
+  - docker run -e CI=true strik3ria/react-test npm test
 
 deploy:
   provider: script
