@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: robertcoones-com-tls
+spec:
+  secretName: robertcoones-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: robertcoones.com
+  dnsNames:
+    - robertcoones.com
+    - www.robertcoones.com
